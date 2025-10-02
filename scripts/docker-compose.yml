@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  mongodb:
+    image: mongo:6
+    container_name: geopipeline-mongo
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    volumes:
+      - ./data/mongodb:/data/db
+
+  nominatim:
+    image: mediagis/nominatim:5.1
+    container_name: geopipeline-nominatim
+    restart: unless-stopped
+    shm_size: "12g"
+    ports:
+      - "8080:8080"
+    environment:
+      NOMINATIM_NO_UPDATE: "1"
+      NOMINATIM_IMPORT_STYLE: "admin"
+      PBF_PATH: /nominatim/data.osm.pbf
+    volumes:
+      - ./data/nominatim:/var/lib/postgresql/16/main
+      - ./infra/planet-admin.osm.pbf:/nominatim/data.osm.pbf

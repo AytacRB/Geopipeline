@@ -1,0 +1,21 @@
+mongo_uri: "mongodb://localhost:27017"
+db: "mediaTracker"
+
+ner:
+  source_col: "media_en"
+  target_col: "media_en_gpes"
+  model: "en_core_web_md"
+  workers: 4
+  chunksize: 100
+  batch_size: 500
+
+geocode:
+  source_col: "media_en_gpes"
+  cache_db: "./entity_geo_cache.sqlite"
+  nominatim_url: "http://localhost:8080"
+  workers: 4
+  rate_limit: 0.1
+  chunksize: 10
+  bulk_size: 250
+  resume: true
+  resume_file: "./last_id.txt"
