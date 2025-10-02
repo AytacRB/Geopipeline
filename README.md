@@ -14,14 +14,14 @@ Features:
 
 ## How to:
 
-Step 1) Make sure you have a MongoDB instance and a Nominatim instance running
-Step 2) Inside of settings.yml make sure the arguments are pointing to the correct ports (Default: MongoDB on :27017   and Nominatim on :8080)
-Step 3) Run:
-  Option a) Run using CLI
+- Step 1) Make sure you have a MongoDB instance and a Nominatim instance running
+- Step 2) Inside of settings.yml make sure the arguments are pointing to the correct ports (Default: MongoDB on :27017   and Nominatim on :8080)
+- Step 3) Run:
+  - Option a) Run using CLI
     - geopipeline-ner --db *yourDB* --source-col *yourCol* --target-col *yourTargetCol*
     - geopipeline-geocode *yourDB* --source-col *yourCol* --target-col *yourTargetCol* --cache-db *yourSQLitecache*
 
-  Option b) Run using preconfigured settings.yml
+  - Option b) Run using preconfigured settings.yml
     - geopipeline-ner --config settings.yml
     - geopipeline-geocode --config settings.yml
 
