@@ -12,20 +12,17 @@ Features:
 
 ---
 
-## Project Structure
+## How to:
 
+Step 1) Make sure you have a MongoDB instance and a Nominatim instance running
+Step 2) Inside of settings.yml make sure the arguments are pointing to the correct ports (Default: MongoDB on :27017   and Nominatim on :8080)
+Step 3) Run:
+  Option a) Run using CLI
+    - geopipeline-ner --db *yourDB* --source-col *yourCol* --target-col *yourTargetCol*
+    - geopipeline-geocode *yourDB* --source-col *yourCol* --target-col *yourTargetCol* --cache-db *yourSQLitecache*
 
-geopipeline/
-├── cli/                
-│   ├── geocode_cli.py  # CLI for geocoding
-│   └── ner_cli.py      # CLI for NER
-├── db.py               # MongoDB + SQLite cache helpers
-├── geocode.py          # Geocoding logic
-├── ner.py              # NER logic
-├── pipeline.py         # Combined NER + geocode pipeline
-├── workers.py          # Parallel processing helpers
-├── config.py           
-scripts/                # Scripts for Nominatim / docker-compose
-requirements.txt        
-pyproject.toml 
-settings.yml            
+  Option b) Run using preconfigured settings.yml
+    - geopipeline-ner --config settings.yml
+    - geopipeline-geocode --config settings.yml
+
+Geocoding process uses --resume flag per default for pause/resume feature
